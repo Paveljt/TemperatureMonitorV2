@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "author": "Pavel",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-arduino-uno",
+      "id": "uno",
+      "top": 100,
+      "left": 0,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-dht22",
+      "id": "sensor",
+      "top": -80,
+      "left": 30,
+      "attrs": {
+        "temperature": "24",
+        "humidity": "40"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led",
+      "top": -60,
+      "left": 250,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "resistor",
+      "top": 30,
+      "left": 240,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "pullup",
+      "top": -20,
+      "left": 120,
+      "attrs": { "value": "10000" }
+    }
+  ],
+  "connections": [
+    ["uno:5V", "sensor:VCC", "red", []],
+    ["uno:GND.2", "sensor:GND", "black", []],
+    ["uno:2", "sensor:SDA", "green", []],
+    ["sensor:VCC", "pullup:1", "red", []],
+    ["pullup:2", "sensor:SDA", "green", []],
+    ["uno:8", "resistor:1", "orange", []],
+    ["resistor:2", "led:A", "orange", []],
+    ["led:C", "uno:GND.1", "black", []]
+  ]
+}
